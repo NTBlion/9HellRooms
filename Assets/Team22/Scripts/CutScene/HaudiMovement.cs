@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HaudiMovement : MonoBehaviour
 {
@@ -6,8 +7,9 @@ public class HaudiMovement : MonoBehaviour
     [SerializeField] private Transform _runEndPoint;
     [SerializeField] private float _speed;
 
-    private bool _isRunning = false;
+    public event UnityAction Exploded; 
 
+    private bool _isRunning = false;
 
 
     private void Update()
@@ -26,6 +28,7 @@ public class HaudiMovement : MonoBehaviour
         if (transform.position.x >= _runEndPoint.position.x)
         {
             transform.position = _runEndPoint.position;
+            Exploded?.Invoke();
         }
     }
 }
