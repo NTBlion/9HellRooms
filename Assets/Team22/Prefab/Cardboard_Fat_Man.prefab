@@ -2428,7 +2428,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8494304359432196863}
-  - component: {fileID: 5515069163847061959}
   - component: {fileID: 8459175626859050500}
   m_Layer: 0
   m_Name: Cardboard_Fat_Man
@@ -2454,19 +2453,6 @@ Transform:
   - {fileID: 5762881892864006507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5515069163847061959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9127112422307547205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43b1f22ddcb115444abc69262590c9d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animationController: {fileID: 0}
 --- !u!95 &8459175626859050500
 Animator:
   serializedVersion: 5
@@ -2477,7 +2463,7 @@ Animator:
   m_GameObject: {fileID: 9127112422307547205}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 90108caf1720d9e48a3dcd79119494ec, type: 3}
-  m_Controller: {fileID: 9100000, guid: fcab70d59c9c2b14fac2f79760a941d3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1fd78e7fc7a56ec4382d1d8cbdd8fc27, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
