@@ -17,8 +17,24 @@ namespace Unity.FPS.UI
         [Tooltip("Whether the health bar is visible when at full health or not")]
         public bool HideFullHealthBar = true;
 
+        private bool _isDead = false;
+
+        private void Start()
+        {
+            Health.OnDie += OnDie;
+        }
+
+        private void OnDie()
+        {
+            _isDead = true;
+            Hide();
+        }
+
         void Update()
         {
+            if(_isDead)
+                return;
+            
             // update health bar value
             HealthBarImage.fillAmount = Health.CurrentHealth / Health.MaxHealth;
 
@@ -28,6 +44,11 @@ namespace Unity.FPS.UI
             // hide health bar if needed
             if (HideFullHealthBar)
                 HealthBarPivot.gameObject.SetActive(HealthBarImage.fillAmount != 1);
+        }
+
+        private void Hide()
+        {
+            HealthBarPivot.gameObject.SetActive(false);
         }
     }
 }
