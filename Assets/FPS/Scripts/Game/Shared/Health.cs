@@ -57,6 +57,8 @@ namespace Unity.FPS.Game
             {
                 OnDamaged?.Invoke(trueDamageAmount, damageSource);
             }
+            
+            Debug.Log(CurrentHealth);
 
             HandleDeath();
         }
