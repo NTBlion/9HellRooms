@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class CameraBehavior : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CameraBehavior : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _maxRotationX;
     [SerializeField] private float _minRotationX;
+    [SerializeField] private Transform _afterKickPosition;
 
     public event UnityAction CameraStop;
 
@@ -23,11 +25,6 @@ public class CameraBehavior : MonoBehaviour
         _hand.AnimationStop -= OnAnimationStop;
     }
 
-    private void OnAnimationStop(bool isAnimationStop)
-    {
-        _isAnimationStart = isAnimationStop;
-
-    }
 
     private void Update()
     {
@@ -41,8 +38,17 @@ public class CameraBehavior : MonoBehaviour
             _isAnimationStart = false;
             this.enabled = false;
             CameraStop?.Invoke();
-
         }
+    }
+    public void OnKicked()
+    {
+        StartCoroutine(Kick());
+    }
+
+    private void OnAnimationStop(bool isAnimationStop)
+    {
+        _isAnimationStart = isAnimationStop;
+
     }
 
     private void LimitRotation()
@@ -53,5 +59,15 @@ public class CameraBehavior : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(rotation);
 
+    }
+
+    private IEnumerator Kick()
+    {
+        yield return new WaitForSeconds(0.3f);
+        for (int i = 0; i < 10; i++)
+        {
+            transform.Translate((new Vector3(1,-1,0).normalized  * Time.deltaTime * 23), Space.World);
+                yield return null;
+        }
     }
 }
