@@ -55,6 +55,7 @@ namespace Unity.FPS.AI
             float sqrDetectionRange = DetectionRange * DetectionRange;
             IsSeeingTarget = false;
             float closestSqrDistance = Mathf.Infinity;
+
             foreach (Actor otherActor in m_ActorsManager.Actors)
             {
                 if (otherActor.Affiliation != actor.Affiliation)
@@ -88,6 +89,7 @@ namespace Unity.FPS.AI
 
                                 TimeLastSeenTarget = Time.time;
                                 KnownDetectedTarget = otherActor.AimPoint.gameObject;
+                                Debug.Log("Targeted");
                             }
                         }
                     }
@@ -103,6 +105,7 @@ namespace Unity.FPS.AI
                 KnownDetectedTarget != null)
             {
                 OnDetect();
+                Debug.Log(KnownDetectedTarget);
             }
 
             if (HadKnownTarget &&
