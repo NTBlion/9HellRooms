@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.FPS.AI;
 using Unity.FPS.Game;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Team22.Scripts
 {
@@ -154,9 +155,13 @@ namespace Team22.Scripts
                 selfCollider.enabled = false;
             }
 
-            int thrust = 2;
+            int thrust = 6;
             GameObject loot = Instantiate(_lootPrefab, _spawnLootPoint.position, Quaternion.identity);
-            loot.GetComponent<Rigidbody>().AddForce( transform.forward * thrust, ForceMode.Impulse);
+            loot.GetComponent<Rigidbody>().AddForce
+            ( 
+                (new Vector3(0, 0, 0) + transform.forward)
+                * thrust,
+                ForceMode.Impulse);
         }
     }
 }
