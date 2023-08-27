@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class HandAnimation : MonoBehaviour
 {
-    [SerializeField] private int _stopAnimationDelay = 3;
+    [SerializeField] private float _stopAnimationDelay = 3;
     private Animator _animator;
 
     public event UnityAction<bool> AnimationStop;
