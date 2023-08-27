@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KickAnimation : MonoBehaviour
@@ -20,6 +18,10 @@ public class KickAnimation : MonoBehaviour
         {
             _camera.OnKicked();
             _isKicked = true;
+        }
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("runaway"))
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * 3, Space.World);
         }
     }
 }

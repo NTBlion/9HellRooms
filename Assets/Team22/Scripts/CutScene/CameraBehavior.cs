@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CameraBehavior : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CameraBehavior : MonoBehaviour
     [SerializeField] private Transform _afterKickPosition;
 
     public event UnityAction CameraStop;
+    public event UnityAction GetUp;
 
     private bool _isAnimationStart = false;
 
@@ -39,6 +41,12 @@ public class CameraBehavior : MonoBehaviour
             this.enabled = false;
             CameraStop?.Invoke();
         }
+
+        if (transform.position == new Vector3(-4.91f, 1.1f, 0))
+        {
+            //SceneManager.LoadScene(1);
+        }
+
     }
     public void OnKicked()
     {
@@ -69,5 +77,7 @@ public class CameraBehavior : MonoBehaviour
             transform.Translate((new Vector3(1,-1,0).normalized  * Time.deltaTime * 23), Space.World);
                 yield return null;
         }
+        yield return new WaitForSeconds(3);
+        GetUp?.Invoke();
     }
 }
