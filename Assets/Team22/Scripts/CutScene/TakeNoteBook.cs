@@ -5,7 +5,6 @@ using UnityEngine;
 public class TakeNoteBook : MonoBehaviour
 {
     [SerializeField] private GameObject _notebook;
-    [SerializeField] private Transform _point;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _table;
     [SerializeField] private GameObject _effect;
@@ -16,8 +15,7 @@ public class TakeNoteBook : MonoBehaviour
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("pick") && _isPick == false)
         {
-            _notebook.transform.parent = _point;
-            _notebook.transform.position = _point.position;
+            _notebook.gameObject.SetActive(false);
             _table.gameObject.SetActive(false);
             Instantiate(_effect, _spawnPoint, Quaternion.identity);
             _isPick = true;
